@@ -25,13 +25,13 @@ public class SquareImageView extends android.support.v7.widget.AppCompatImageVie
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        setMeasuredDimension(getDefaultSize(0,widthMeasureSpec),getDefaultSize(0,heightMeasureSpec));
+//        setMeasuredDimension(getDefaultSize(0,widthMeasureSpec),getDefaultSize(0,heightMeasureSpec));
+//
+//        int WidthSize=getMeasuredWidth();
+//
+//        heightMeasureSpec=widthMeasureSpec=MeasureSpec.makeMeasureSpec(WidthSize,MeasureSpec.EXACTLY);
 
-        int WidthSize=getMeasuredWidth();
-
-        heightMeasureSpec=widthMeasureSpec=MeasureSpec.makeMeasureSpec(WidthSize,MeasureSpec.EXACTLY);
-
-        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec,widthMeasureSpec);
 
     }
 }

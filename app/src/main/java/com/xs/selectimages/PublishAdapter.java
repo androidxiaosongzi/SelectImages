@@ -20,6 +20,8 @@ public class PublishAdapter extends RecyclerView.Adapter<PublishAdapter.PublishV
 
     private List<String> images;
     private Context mContext;
+    private OnAddImageClickListener onAddImageClickListener;
+    private OnImageClickListener onImageClickListener;
 
     public PublishAdapter(List<String> images, Context mContext) {
         this.images = images;
@@ -35,13 +37,30 @@ public class PublishAdapter extends RecyclerView.Adapter<PublishAdapter.PublishV
     }
 
     @Override
-    public void onBindViewHolder(PublishViewHolder holder, int position) {
-//        Glide.with(mContext).load(images.get(position)).into(holder.ivImage);
+    public void onBindViewHolder(PublishViewHolder holder, final int position) {
+        //判断当前position 是否是 列表中最后一个 是则 显示 指定图片
+        if(position==images.size()){
+            Glide.with(mContext).load(R.mipmap.add_image).into(holder.ivImage);
+            holder.ivImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAddImageClickListener.onAddImageClickListener();
+                }
+            });
+        }else{
+            holder.ivImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onImageClickListener.onImageClickListener(position);
+                }
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
-        return images.size();
+        //为列表添加一个 放+号的位置
+        return images.size()+1;
     }
 
     class PublishViewHolder extends RecyclerView.ViewHolder{
@@ -51,9 +70,25 @@ public class PublishAdapter extends RecyclerView.Adapter<PublishAdapter.PublishV
         public PublishViewHolder(View itemView) {
             super(itemView);
             ivImage=itemView.findViewById(R.id.iv_image);
-
-            Log.e("TAG","ImageView宽度："+ivImage.getWidth()+"");
         }
+    }
+
+    //定义 + 号 图片的点击事件
+    interface OnAddImageClickListener{
+        void onAddImageClickListener();
+    }
+
+    //定义普通图片的点击事件
+    interface OnImageClickListener{
+        void onImageClickListener(int position);
+    }
+
+    public void setOnAddImageClickListener(OnAddImageClickListener onAddImageClickListener){
+        this.onAddImageClickListener=onAddImageClickListener;
+    }
+
+    public void setOnImageClickListener(OnImageClickListener onImageClickListener){
+        this.onImageClickListener=onImageClickListener;
     }
 
 }

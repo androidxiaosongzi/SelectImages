@@ -1,16 +1,20 @@
 package com.xs.selectimages;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PublishAdapter.OnAddImageClickListener
+public class MainActivity extends BaseActivity implements PublishAdapter.OnAddImageClickListener
         ,PublishAdapter.OnImageClickListener ,AddImageDialog.OnTakePhotoClickListener,AddImageDialog.OnTakePictureClickListener{
 
     private RecyclerView rvImageList;
@@ -23,9 +27,28 @@ public class MainActivity extends AppCompatActivity implements PublishAdapter.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         initView();
         initRecyclerView();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected String setTitle() {
+        return "发布动态";
+    }
+
+    @Override
+    protected void toolbarRightClick() {
+        Toast.makeText(MainActivity.this,"发布",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected String setToolbarRightText() {
+        return "发表";
     }
 
     /**
@@ -36,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements PublishAdapter.On
         dialog=new AddImageDialog(this,R.style.Dialog);
         dialog.setOnTakePhotoClickListener(this);
         dialog.setOnTakePictureClickListener(this);
+
+
     }
 
     /**
@@ -44,9 +69,6 @@ public class MainActivity extends AppCompatActivity implements PublishAdapter.On
     private void initRecyclerView(){
 
         images=new ArrayList<>();
-        for (int i=0;i<4;i++){
-            images.add("");
-        }
 
         GridLayoutManager manager=new GridLayoutManager(this,3);
         rvImageList.setLayoutManager(manager);
@@ -79,6 +101,14 @@ public class MainActivity extends AppCompatActivity implements PublishAdapter.On
     //从相册选择
     @Override
     public void onTakePictureClickListener() {
-        Toast.makeText(MainActivity.this,"相册",Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(this,TakePictureActivity.class);
+        startActivityForResult(intent,IntentConfig.TAKE_PICTURE);
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }

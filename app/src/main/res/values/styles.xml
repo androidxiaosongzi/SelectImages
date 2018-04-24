@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    
+    <style name="ToolbarTitleText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="Dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!--边框-->
@@ -18,7 +27,7 @@
         <item name="android:windowNoTitle">true</item>
         <!--无标题-->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <!--背景透明-->
+        <!--背  景透明-->
         <item name="android:backgroundDimEnabled">true</item>
         <!--模糊-->
     </style>

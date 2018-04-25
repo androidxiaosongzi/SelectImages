@@ -4,6 +4,10 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+/**
+ * @author 小松 2018/4/24
+ */
+
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
     private int spanCount;

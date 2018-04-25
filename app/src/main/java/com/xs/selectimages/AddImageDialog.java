@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Created by Administrator on 2018/4/24.
+ * @author 小松 2018/4/24
  */
 
 public class AddImageDialog extends Dialog implements View.OnClickListener {

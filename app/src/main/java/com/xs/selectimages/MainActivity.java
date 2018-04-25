@@ -1,18 +1,19 @@
 package com.xs.selectimages;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Toast;
+
+import com.xs.selectimages.adapter.PublishAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author 小松 2018/4/24
+ */
 
 public class MainActivity extends BaseActivity implements PublishAdapter.OnAddImageClickListener
         ,PublishAdapter.OnImageClickListener ,AddImageDialog.OnTakePhotoClickListener,AddImageDialog.OnTakePictureClickListener{

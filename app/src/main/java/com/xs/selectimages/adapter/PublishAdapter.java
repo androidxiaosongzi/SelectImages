@@ -1,19 +1,19 @@
-package com.xs.selectimages;
+package com.xs.selectimages.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.xs.selectimages.R;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/4/23.
+ * @author 小松 2018/4/24
  */
 
 public class PublishAdapter extends RecyclerView.Adapter<PublishAdapter.PublishViewHolder>{
@@ -74,12 +74,12 @@ public class PublishAdapter extends RecyclerView.Adapter<PublishAdapter.PublishV
     }
 
     //定义 + 号 图片的点击事件
-    interface OnAddImageClickListener{
+    public interface OnAddImageClickListener{
         void onAddImageClickListener();
     }
 
     //定义普通图片的点击事件
-    interface OnImageClickListener{
+    public interface OnImageClickListener{
         void onImageClickListener(int position);
     }
 

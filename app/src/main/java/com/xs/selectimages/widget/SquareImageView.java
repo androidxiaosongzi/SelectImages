@@ -1,4 +1,4 @@
-package com.xs.selectimages;
+package com.xs.selectimages.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 /**
- * Created by Administrator on 2018/4/23.
+ * @author 小松 2018/4/24
  */
 
 public class SquareImageView extends android.support.v7.widget.AppCompatImageView {

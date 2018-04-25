@@ -1,7 +1,7 @@
 package com.xs.selectimages;
 
 /**
- * Created by Administrator on 2018/4/24.
+ * @author 小松 2018/4/24
  */
 
 public class IntentConfig {
